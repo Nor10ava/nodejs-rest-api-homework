@@ -1,0 +1,75 @@
+[33mcommit 00a294edcd9de90e854782909e6758b2b71f7187[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 076e884 fad71e2
+Author: Nor10ava <anastasiatasyarom@gmail.com>
+Date:   Thu Jan 27 15:36:06 2022 +0100
+
+    conflicts solved
+
+[33mcommit 076e8841313beecd39a60a6596d08974cffef9c1[m
+Merge: a065861 39e88ba
+Author: Nor10ava <anastasiatasyarom@gmail.com>
+Date:   Thu Jan 27 15:24:34 2022 +0100
+
+    Merge branch 'hw03-mongodb'
+
+[33mcommit 39e88ba2b2bbcb0ebe9db15e807d9646d529fb09[m[33m ([m[1;31morigin/hw03-mongodb[m[33m, [m[1;32mhw03-mongodb[m[33m)[m
+Author: Nor10ava <anastasiatasyarom@gmail.com>
+Date:   Thu Jan 27 14:28:28 2022 +0100
+
+    hw03 done
+
+[33mcommit fad71e247328db6b97938e0a59f15de9a80670ee[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: a065861 ab9121a
+Author: Anastasia Romanova <80046274+Nor10ava@users.noreply.github.com>
+Date:   Tue Jan 25 17:29:28 2022 +0000
+
+    Merge pull request #1 from Nor10ava/hw02
+    
+    hw2 done
+
+[33mcommit ab9121a230b095fcea7e21ce3de098a238a0df87[m[33m ([m[1;31morigin/hw02[m[33m, [m[1;32mhw02[m[33m)[m
+Author: Nor10ava <anastasiatasyarom@gmail.com>
+Date:   Sun Jan 23 17:22:34 2022 +0100
+
+    hw2 done
+
+[33mcommit a065861e0bd71f93c1bd7782d061d0f2fd6ed5ac[m
+Merge: a2e080b 82f757b
+Author: Yuriy Kuchma <krabatua@gmail.com>
+Date:   Wed Jan 19 23:27:56 2022 +0200
+
+    Merge pull request #535 from goitacademy/small-fix
+    
+    add small fix
+
+[33mcommit 82f757b05439601a8e32620fe1360394deaee405[m
+Author: MandorSavall <bogdan.lyamzin.d@gmail.com>
+Date:   Wed Jan 19 20:50:40 2022 +0200
+
+    small fix
+
+[33mcommit 6918b59a16c4acb57f0b31d1050ea4eec9d43b87[m
+Author: MandorSavall <bogdan.lyamzin.d@gmail.com>
+Date:   Wed Jan 19 17:50:22 2022 +0200
+
+    add small fix
+
+[33mcommit a2e080bc28d5790e5a4ca90479c4d0037b1367cb[m
+Author: krabaton <krabatua@gmail.com>
+Date:   Wed Dec 15 05:01:17 2021 +0200
+
+    light fix
+    add prettier to config
+
+[33mcommit dd40ecfd49d70eb26883b844dbf89ffa7a247af2[m
+Author: krabaton <krabatua@gmail.com>
+Date:   Fri Feb 12 15:01:08 2021 +0200
+
+    Refactor.
+    Simplification of the structure.
+
+[33mcommit f93f2acad8ed901a443ef16cb549486ab8482cc9[m
+Author: krabaton <krabatua@gmail.com>
+Date:   Mon Feb 8 02:57:53 2021 +0200
+
+    first commit

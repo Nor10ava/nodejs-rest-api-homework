@@ -1,13 +1,13 @@
 import Joi from "joi";
-// import { MAX_AGE, MIN_AGE } from "../../../lib/constants";
+import { MAX_AGE, MIN_AGE } from "../../../lib/constants";
 import pkg from "mongoose";
 
 const { Types } = pkg;
 const createSchema = Joi.object({
-  name: Joi.string().min(3).max(20).required(),
+  name: Joi.string().min(2).max(20).required(),
   email: Joi.string().email().required(),
   phone: Joi.string().required(),
-  // age: Joi.number().integer().min(MIN_AGE).max(MAX_AGE).optional(),
+  age: Joi.number().integer().min(MIN_AGE).max(MAX_AGE).optional(),
   favorite: Joi.bool().optional(),
 });
 
@@ -15,7 +15,7 @@ const updateSchema = Joi.object({
   name: Joi.string().optional(),
   email: Joi.string().email().optional(),
   phone: Joi.string().optional(),
-  // age: Joi.number().integer().min(MIN_AGE).max(MAX_AGE).optional(),
+  age: Joi.number().integer().min(MIN_AGE).max(MAX_AGE).optional(),
   favorite: Joi.bool().optional(),
 }).or("name", "email", "phone", "age");
 
@@ -76,3 +76,13 @@ export const validateId = async (req, res, next) => {
 //     .pattern(new RegExp("(name|email|age)\\|?(name|email|age)+"))
 //     .optional(),
 // });
+// export const validateQuery = async (req, res, next) => {
+//   try {
+//     await querySchema.validateAsync(req.query);
+//   } catch (err) {
+//     return res
+//       .status(400)
+//       .json({ message: `Field ${err.message.replace(/"/g, "")}` });
+//   }
+//   next();
+// };

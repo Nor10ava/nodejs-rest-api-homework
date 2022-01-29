@@ -1,28 +1,32 @@
 import repositoryContacts from "../../repository/contacts";
 import { HttpCode } from "../../lib/constants";
 
-export const controllerGetContacts = async (req, res, next) => {
-  const contacts = await repositoryContacts.listContacts(req.query);
+const getContacts = async (req, res, next) => {
+  const { id: userId } = req.user;
+  const contacts = await repositoryContacts.listContacts(userId, req.query);
   res
     .status(HttpCode.OK)
     .json({ status: "success", code: HttpCode.OK, data: { ...contacts } });
 };
 
-export const getContactById = async (req, res, next) => {
+const getContactById = async (req, res, next) => {
   const { id } = req.params;
-  const contact = await repositoryContacts.getContactById(id);
+  const { id: userId } = req.user;
+  const contact = await repositoryContacts.getContactById(userId, id);
+  console.log(contact); // toObject
   if (contact) {
     return res
       .status(HttpCode.OK)
-      .json({ status: "success", code: HttpCode.OK, data: { contact } });
+      .json({ status: "success", code: HttpCode.OK, data: { contact } }); // toJson
   }
   res
     .status(HttpCode.NOT_FOUND)
     .json({ status: "error", code: HttpCode.NOT_FOUND, message: "Not found" });
 };
 
-export const newContact = async (req, res, next) => {
-  const newContact = await repositoryContacts.addContact(req.body);
+const addContact = async (req, res, next) => {
+  const { id: userId } = req.user;
+  const newContact = await repositoryContacts.addContact(userId, req.body);
   res.status(HttpCode.CREATED).json({
     status: "success",
     code: HttpCode.OK,
@@ -30,25 +34,11 @@ export const newContact = async (req, res, next) => {
   });
 };
 
-export const removeContact = async (req, res, next) => {
+const removeContact = async (req, res, next) => {
   const { id } = req.params;
-  const contact = await repositoryContacts.removeContact(id);
+  const { id: userId } = req.user;
+  const contact = await repositoryContacts.removeContact(userId, id);
   if (contact) {
-    console.log();
-    return res
-      .status(HttpCode.OK)
-      .json({ status: "success", code: HttpCode.OK, message: "Not found" });
-  }
-  res
-    .status(HttpCode.NOT_FOUND)
-    .json({ status: "error", code: HttpCode.NOT_FOUND, message: "Not found" });
-};
-
-export const updateContact = async (req, res, next) => {
-  const { id } = req.params;
-  const contact = await repositoryContacts.updateContact(id, req.body);
-  if (contact) {
-    console.log();
     return res
       .status(HttpCode.OK)
       .json({ status: "success", code: HttpCode.OK, data: { contact } });
@@ -56,4 +46,26 @@ export const updateContact = async (req, res, next) => {
   res
     .status(HttpCode.NOT_FOUND)
     .json({ status: "error", code: HttpCode.NOT_FOUND, message: "Not found" });
+};
+
+const updateContact = async (req, res, next) => {
+  const { id } = req.params;
+  const { id: userId } = req.user;
+  const contact = await repositoryContacts.updateContact(userId, id, req.body);
+  if (contact) {
+    return res
+      .status(HttpCode.OK)
+      .json({ status: "success", code: HttpCode.OK, data: { contact } });
+  }
+  res
+    .status(HttpCode.NOT_FOUND)
+    .json({ status: "error", code: HttpCode.NOT_FOUND, message: "Not found" });
+};
+
+export {
+  getContacts,
+  getContactById,
+  addContact,
+  removeContact,
+  updateContact,
 };

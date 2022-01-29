@@ -1,35 +1,36 @@
 import { Router } from "express";
 import {
-  controllerGetContacts,
+  getContacts,
   getContactById,
-  newContact,
+  addContact,
   removeContact,
   updateContact,
-} from "../../../controllers/contacts/index";
+} from "../../../controllers/contacts";
 
 import {
   validateCreate,
-  validateId,
   validateUpdate,
+  validateId,
   validateUpdateFavorite,
 } from "./validation";
 
+import guard from "../../../middlewares/guard";
+
 const router = new Router();
 
-router.get("/", controllerGetContacts);
+router.get("/", [guard], getContacts);
 
-router.get("/:id", getContactById);
+router.get("/:id", [guard, validateId], getContactById);
 
-router.post("/", validateCreate, newContact);
+router.post("/", [guard, validateCreate], addContact);
 
-router.delete("/:id", validateId, removeContact);
+router.delete("/:id", [guard, validateId], removeContact);
 
-router.put("/:id", validateId, validateUpdate, updateContact);
+router.put("/:id", [guard, validateId, validateUpdate], updateContact);
 
 router.patch(
   "/:id/favorite",
-  validateId,
-  validateUpdateFavorite,
+  [guard, validateId, validateUpdateFavorite],
   updateContact
 );
 
