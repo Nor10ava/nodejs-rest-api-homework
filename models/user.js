@@ -1,4 +1,5 @@
 import pkg from "mongoose";
+import gravatar from "gravatar";
 import bcrypt from "bcryptjs";
 import { Role } from "../lib/constants";
 
@@ -32,6 +33,16 @@ const userSchema = new Schema(
       default: Role.ANONIMUS,
     },
     token: {
+      type: String,
+      default: null,
+    },
+    avatar: {
+      type: String,
+      default: function () {
+        return gravatar.url(this.email, { s: "800" }, true);
+      },
+    },
+    idAvatarCloud: {
       type: String,
       default: null,
     },
