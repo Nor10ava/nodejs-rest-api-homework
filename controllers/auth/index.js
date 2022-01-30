@@ -2,8 +2,9 @@ import { HttpCode } from "../../lib/constants";
 import AuthService from "../../service/auth";
 const authService = new AuthService();
 
-const registration = async (req, res, next) => {
+const registration = async (req, res) => {
   const { email } = req.body;
+  // console.log(email);
   const isUserExist = await authService.isUserExist(email);
   if (isUserExist) {
     return res.status(HttpCode.CONFLICT).json({
