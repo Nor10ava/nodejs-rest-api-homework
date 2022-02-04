@@ -21,8 +21,9 @@ class AuthService {
 
   async getUser(email, password) {
     const user = await Users.findByEmail(email);
+    // console.log(email);
     const isValidPassword = await user?.isValidPassword(password);
-    if (!isValidPassword) {
+    if (!isValidPassword || !user?.isVerify) {
       return null;
     }
     return user;
